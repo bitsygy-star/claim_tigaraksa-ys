@@ -1,13 +1,395 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!-- Ganti link di bawah dengan link Cloudflare kamu saat ini -->
-    <meta http-equiv="refresh" content="0; url=https://orchestra-leasing-decide-offshore.trycloudflare.com/form_claim/login.php" />
-    <title>Redirecting to Claim YS...</title>
-  </head>
-  <body>
-    <p style="text-align:center; font-family:sans-serif; margin-top:50px;">
-      Mengarahkan ke Sistem Claim YS...
-    </p>
-  </body>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS - Claim Monitoring System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.88)), 
+                  url('background_CMS.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 16px 20px 16px;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .header-box {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .logo-img {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 16px;
+      padding: 4px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.45);
+    }
+
+    .company-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 20px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      margin-bottom: 8px;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .main-title {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      line-height: 1.1;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #e2e8f0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Animasi Teks */
+    .prompt-box {
+      margin-top: 10px;
+      margin-bottom: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 18px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+      animation: pulseGlow 1.8s infinite ease-in-out;
+    }
+
+    .prompt-text {
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: #f8fafc;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.98);
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.02);
+        border-color: #38bdf8;
+        box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+      }
+    }
+
+    /* ========================================================
+       EFEK LINGKARAN SIHIR DOCTOR STRANGE & FINGERPRINT SCAN
+       ======================================================== */
+    .portal-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 65px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .strange-wrapper {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Cincin Luar 1: Pola Putar Bergerigi / Rune Circle */
+    .strange-ring-outer {
+      position: absolute;
+      inset: -26px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, 0.2);
+      opacity: 0.3;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Cincin Luar 2: Lingkaran Percikan / Spark Border */
+    .strange-ring-inner {
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 2px dotted rgba(255, 255, 255, 0.25);
+      opacity: 0.35;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Gelombang Ripple Fingerprint */
+    .strange-pulse {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* --- VARIASI WARNA HIJAU (DC) --- */
+    .wrap-dc .strange-ring-outer { border-color: rgba(74, 222, 128, 0.3); }
+    .wrap-dc .strange-ring-inner { border-color: rgba(187, 247, 208, 0.3); }
+
+    .wrap-dc:hover .strange-ring-outer {
+      opacity: 1;
+      border-color: #4ade80;
+      box-shadow: 0 0 25px rgba(74, 222, 128, 0.75), inset 0 0 20px rgba(74, 222, 128, 0.4);
+      animation: spinClockwise 4s linear infinite;
+    }
+
+    .wrap-dc:hover .strange-ring-inner {
+      opacity: 1;
+      border-color: #bbf7d0;
+      box-shadow: 0 0 20px rgba(187, 247, 208, 0.8);
+      animation: spinCounterClockwise 2.5s linear infinite;
+    }
+
+    .wrap-dc:hover .strange-pulse {
+      animation: strangeFingerprintGreen 1.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* --- VARIASI WARNA MERAH (KAM) --- */
+    .wrap-kam .strange-ring-outer { border-color: rgba(248, 113, 113, 0.3); }
+    .wrap-kam .strange-ring-inner { border-color: rgba(254, 202, 202, 0.3); }
+
+    .wrap-kam:hover .strange-ring-outer {
+      opacity: 1;
+      border-color: #f87171;
+      box-shadow: 0 0 25px rgba(248, 113, 113, 0.75), inset 0 0 20px rgba(248, 113, 113, 0.4);
+      animation: spinClockwise 4s linear infinite;
+    }
+
+    .wrap-kam:hover .strange-ring-inner {
+      opacity: 1;
+      border-color: #fecaca;
+      box-shadow: 0 0 20px rgba(254, 202, 202, 0.8);
+      animation: spinCounterClockwise 2.5s linear infinite;
+    }
+
+    .wrap-kam:hover .strange-pulse {
+      animation: strangeFingerprintRed 1.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    /* Keyframes Putaran Dr. Strange */
+    @keyframes spinClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes spinCounterClockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    /* Keyframes Efek Sentuh Fingerprint */
+    @keyframes strangeFingerprintGreen {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.9;
+        border: 2px solid #4ade80;
+        box-shadow: 0 0 10px #4ade80;
+      }
+      100% {
+        transform: scale(1.28);
+        opacity: 0;
+        border: 2px solid transparent;
+        box-shadow: 0 0 40px rgba(74, 222, 128, 0);
+      }
+    }
+
+    @keyframes strangeFingerprintRed {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.9;
+        border: 2px solid #f87171;
+        box-shadow: 0 0 10px #f87171;
+      }
+      100% {
+        transform: scale(1.28);
+        opacity: 0;
+        border: 2px solid transparent;
+        box-shadow: 0 0 40px rgba(248, 113, 113, 0);
+      }
+    }
+
+    /* Tombol Utama */
+    .circle-btn {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 5;
+    }
+
+    .btn-circle-dc {
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.45) 0%, rgba(22, 163, 74, 0.85) 100%);
+      border: 3.5px solid #4ade80;
+      color: #ffffff;
+    }
+
+    .wrap-dc:hover .btn-circle-dc {
+      transform: scale(1.05);
+      border-color: #ffffff;
+      box-shadow: 0 0 35px rgba(74, 222, 128, 0.9), inset 0 0 15px rgba(255,255,255,0.4);
+      color: #ffffff;
+    }
+
+    .btn-circle-kam {
+      background: radial-gradient(circle, rgba(248, 113, 113, 0.45) 0%, rgba(185, 28, 28, 0.85) 100%);
+      border: 3.5px solid #f87171;
+      color: #ffffff;
+    }
+
+    .wrap-kam:hover .btn-circle-kam {
+      transform: scale(1.05);
+      border-color: #ffffff;
+      box-shadow: 0 0 35px rgba(239, 68, 68, 0.9), inset 0 0 15px rgba(255,255,255,0.4);
+      color: #ffffff;
+    }
+
+    .circle-icon {
+      font-size: 54px;
+      margin-bottom: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .strange-wrapper:hover .circle-icon {
+      transform: scale(1.12);
+    }
+
+    .circle-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+
+    .circle-sub {
+      font-size: 11.5px;
+      opacity: 0.95;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 576px) {
+      .main-title { font-size: 34px; }
+      .sub-title { font-size: 15px; }
+      .company-pill { font-size: 12px; padding: 5px 16px; }
+      .strange-wrapper { width: 210px; height: 210px; }
+      .circle-btn { width: 210px; height: 210px; padding: 16px; }
+      .circle-icon { font-size: 42px; }
+      .circle-title { font-size: 20px; }
+      .portal-container { gap: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header-box">
+    <div class="mb-2">
+      <img src="trs.jpg" alt="Logo PT Tigaraksa Satria Tbk" class="logo-img">
+    </div>
+    <div class="company-pill">
+      PT. TIGARAKSA SATRIA TBK
+    </div>
+    <h1 class="main-title text-white">CMS</h1>
+    <p class="sub-title mb-0">( Claim Monitoring System )</p>
+
+    <!-- Animasi Petunjuk -->
+    <div class="prompt-box">
+      <i class="bi bi-chevron-double-down text-info"></i>
+      <span class="prompt-text">Silahkan pilih akses login...</span>
+      <i class="bi bi-chevron-double-down text-info"></i>
+    </div>
+  </div>
+
+  <!-- Pilihan Bulatan Doctor Strange / Fingerprint Effect -->
+  <div class="portal-container">
+    
+    <!-- DC (Hijau) -->
+    <div class="strange-wrapper wrap-dc">
+      <div class="strange-ring-outer"></div>
+      <div class="strange-ring-inner"></div>
+      <div class="strange-pulse"></div>
+      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/form_claim/login.php/" class="circle-btn btn-circle-dc">
+        <i class="bi bi-shop circle-icon"></i>
+        <span class="circle-title">CLAIM DC</span>
+        <span class="circle-sub">Direct Coverage / General Outlet</span>
+      </a>
+    </div>
+
+    <!-- KAM (Merah) -->
+    <div class="strange-wrapper wrap-kam">
+      <div class="strange-ring-outer"></div>
+      <div class="strange-ring-inner"></div>
+      <div class="strange-pulse"></div>
+      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/claim_kam/login.php/" class="circle-btn btn-circle-kam">
+        <i class="bi bi-cart-check-fill circle-icon"></i>
+        <span class="circle-title">CLAIM KAM</span>
+        <span class="circle-sub">Key Account / Modern Market</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="mt-5 text-center">
+    <small class="text-white-50" style="font-size: 12px; font-weight: 500;">
+      Always Ahead &bull; Cabang Yogyakarta &bull; &copy; 2026
+    </small>
+  </div>
+
+</body>
 </html>
