@@ -115,9 +115,7 @@
       }
     }
 
-    /* ========================================================
-       EFEK LINGKARAN SIHIR DOCTOR STRANGE & FINGERPRINT SCAN
-       ======================================================== */
+    /* Efek Lingkaran Sihir Doctor Strange & Fingerprint */
     .portal-container {
       display: flex;
       justify-content: center;
@@ -136,7 +134,6 @@
       justify-content: center;
     }
 
-    /* Cincin Luar 1: Pola Putar Bergerigi / Rune Circle */
     .strange-ring-outer {
       position: absolute;
       inset: -26px;
@@ -147,7 +144,6 @@
       pointer-events: none;
     }
 
-    /* Cincin Luar 2: Lingkaran Percikan / Spark Border */
     .strange-ring-inner {
       position: absolute;
       inset: -14px;
@@ -158,7 +154,6 @@
       pointer-events: none;
     }
 
-    /* Gelombang Ripple Fingerprint */
     .strange-pulse {
       position: absolute;
       inset: -6px;
@@ -167,7 +162,7 @@
       pointer-events: none;
     }
 
-    /* --- VARIASI WARNA HIJAU (DC) --- */
+    /* Variasi DC (Hijau) */
     .wrap-dc .strange-ring-outer { border-color: rgba(74, 222, 128, 0.3); }
     .wrap-dc .strange-ring-inner { border-color: rgba(187, 247, 208, 0.3); }
 
@@ -189,7 +184,7 @@
       animation: strangeFingerprintGreen 1.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    /* --- VARIASI WARNA MERAH (KAM) --- */
+    /* Variasi KAM (Merah) */
     .wrap-kam .strange-ring-outer { border-color: rgba(248, 113, 113, 0.3); }
     .wrap-kam .strange-ring-inner { border-color: rgba(254, 202, 202, 0.3); }
 
@@ -211,7 +206,6 @@
       animation: strangeFingerprintRed 1.5s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    /* Keyframes Putaran Dr. Strange */
     @keyframes spinClockwise {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -222,7 +216,6 @@
       100% { transform: rotate(-360deg); }
     }
 
-    /* Keyframes Efek Sentuh Fingerprint */
     @keyframes strangeFingerprintGreen {
       0% {
         transform: scale(0.95);
@@ -363,7 +356,7 @@
       <div class="strange-ring-outer"></div>
       <div class="strange-ring-inner"></div>
       <div class="strange-pulse"></div>
-      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/form_claim/login.php/" class="circle-btn btn-circle-dc">
+      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/form_claim/login.php" class="circle-btn btn-circle-dc">
         <i class="bi bi-shop circle-icon"></i>
         <span class="circle-title">CLAIM DC</span>
         <span class="circle-sub">Direct Coverage / General Outlet</span>
@@ -375,7 +368,7 @@
       <div class="strange-ring-outer"></div>
       <div class="strange-ring-inner"></div>
       <div class="strange-pulse"></div>
-      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/claim_kam/login.php/" class="circle-btn btn-circle-kam">
+      <a href="https://orchestra-leasing-decide-offshore.trycloudflare.com/claim_kam/login.php" class="circle-btn btn-circle-kam">
         <i class="bi bi-cart-check-fill circle-icon"></i>
         <span class="circle-title">CLAIM KAM</span>
         <span class="circle-sub">Key Account / Modern Market</span>
